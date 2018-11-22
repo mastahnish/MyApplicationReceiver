@@ -3,6 +3,7 @@ package pl.myosolutions.myapplicationreceiver;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -25,7 +26,9 @@ public class MyService extends Service {
         String quantity = intent.getStringExtra("QUANTITY_KEY");
         String price = intent.getStringExtra("PRICE_KEY");
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent();
+        notificationIntent.setComponent(new ComponentName("com.example.piotr.myapplication", "com.example.piotr.myapplication.OptionActivity"));
+
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, 0);
 
